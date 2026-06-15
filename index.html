@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>index</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+    <section id="booking" class="booking">
+
+    <h2>Book Your Tour</h2>
+
+    <form id="bookingForm">
+
+    <label>Name</label>
+    <input type="text" id="name" placeholder="Full Name" required>
+
+    <label>Email</label>
+    <input type="email" id="email" placeholder="Email" required>
+
+    <label>Date</label>
+    <input type="date" id="tourDate" required>
+
+    <label>Time</label>
+    <select id="tourTime">
+        <option>10:00</option>
+        <option>12:00</option>
+        <option>14:00</option>
+        <option>16:00</option>
+        <option>18:00</option>
+        <option>20:00</option>
+    </select>
+
+    <label>Guests</label>
+    <select id="guests">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+    </select>
+<label>Tour Route</label>
+
+<div class="tour-options">
+
+    <label>
+    <input
+        type="radio"
+        name="tourRoute"
+        value="Osaka Castle"
+        checked
+    >
+        🏯 Osaka Castle
+        <small>(Recommended Morning)</small>
+    </label>
+
+    <label>
+    <input
+            type="radio"
+            name="tourRoute"
+            value="Tsutenkaku"
+    >
+        🗼 Tsutenkaku
+        <small>(Recommended Night)</small>
+    </label>
+
+</div>
+    <button type="submit">
+        BOOK NOW
+    </button>
+
+</form>
+    
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
