@@ -1,5 +1,3 @@
-alert("2026-06-15 TEST");
-
 const dateInput =
     document.getElementById("tourDate");
 
