@@ -105,40 +105,43 @@ emailjs.send(
     .then(function(){
 
     fetch(
-
         "https://script.google.com/macros/s/AKfycbwFxx0ZkuoSUx_9fFlRH1g6WiXpiZ5kenT0ZPMqhTiU9AhPe94OiUtoKIlP3TZ3VEK3uA/exec",
-
         {
-
-        method: "POST",
-
-        body: JSON.stringify({
-
-        name: name,
-
-        email: email,
-
-        date: date,
-
-        time: time,
-
-        guests: guests,
-
-        route: route
-
-    })
-
+            method: "POST",
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                date: date,
+                time: time,
+                guests: guests,
+                route: route
+            })
         }
-
     );
+
+    let paymentLink = "";
+
+    if (guests == 1) {
+        paymentLink = "https://buy.stripe.com/5kQ4gy9vy8o10BN7DNeZ20n";
+    } else if (guests == 2) {
+        paymentLink = "https://buy.stripe.com/7sY28q37aeMp1FR0bleZ20o";
+    } else if (guests == 3) {
+        paymentLink = "https://buy.stripe.com/eVq00i4be8o1fwHe2beZ20p";
+    } else if (guests == 4) {
+        paymentLink = "https://buy.stripe.com/fZu5kCbDG47L84f3nxeZ20q";
+    } else if (guests == 5) {
+        paymentLink = "https://buy.stripe.com/5kQ9AS236cEh2JV7DNeZ20r";
+    } else if (guests == 6) {
+        paymentLink = "https://buy.stripe.com/eVq9ASazC7jXacn1fpeZ20s";
+    } else if (guests == 7) {
+        paymentLink = "https://buy.stripe.com/4gM8wO6jmaw9gAL7DNeZ20t";
+    }
 
     alert(
-    "Booking received. Please complete payment."
+        "Booking received. Please complete payment."
     );
 
-    window.location.href =
-    
-    "https://buy.stripe.com/8x28wOePSfQt70b5vFeZ20e";
+    window.location.href = paymentLink;
 
 })
 
