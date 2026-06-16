@@ -49,23 +49,23 @@ document
 
     document.getElementById("name").value;
 
-const email =
+    const email =
 
     document.getElementById("email").value;
 
-const date =
+    const date =
 
     document.getElementById("tourDate").value;
 
-const time =
+    const time =
 
     document.getElementById("tourTime").value;
 
-const guests =
+    const guests =
 
     document.getElementById("guests").value;
 
-const route =
+    const route =
 
     document.querySelector(
 
@@ -132,13 +132,13 @@ emailjs.send(
 
     );
 
-    alert("Booking request sent successfully!");
+    alert(
+    "Booking received. Please complete payment."
+    );
 
-    document
-
-    .getElementById("bookingForm")
-
-    .reset();
+    window.location.href =
+    
+    "https://buy.stripe.com/8x28wOePSfQt70b5vFeZ20e";
 
 })
 
