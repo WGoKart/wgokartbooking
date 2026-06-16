@@ -1,5 +1,3 @@
-alert("VERSION 999");
-
 const dateInput =
     document.getElementById("tourDate");
 
@@ -74,13 +72,6 @@ document
     'input[name="tourRoute"]:checked'
 
 ).value;
-
-alert("BEFORE STRIPE");
-
-window.location.href =
-"https://buy.stripe.com/5kQ4gy9vy8o10BN7DNeZ20n";
-
-return;
 
 const selectedDate = new Date(date);
 
