@@ -183,6 +183,13 @@ async function checkAvailability() {
         "18:00",
         "20:00"
     ];
+    const now = new Date();
+
+    const currentDate =
+    formatDate(now);
+
+    const currentHour =
+    now.getHours();
 
     const select =
         document.getElementById("tourTime");
@@ -190,6 +197,17 @@ async function checkAvailability() {
     select.innerHTML = "";
 
     times.forEach(function(time){
+
+        if (selectedDate === currentDate) {
+
+            const tourHour =
+                Number(time.split(":")[0]);
+
+            if (tourHour <= currentHour + 2) {
+                return;
+            }
+
+        }
 
         let bookedGuests = 0;
 
