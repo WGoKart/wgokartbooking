@@ -170,9 +170,11 @@ emailjs.send(
 
 .catch(error => {
 
-    console.error(error);
+    console.log(error);
 
-    alert("Error: " + JSON.stringify(error));
+    console.log("Template:", error);
+
+    alert(JSON.stringify(error));
 
 });
 });
