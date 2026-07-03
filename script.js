@@ -122,6 +122,27 @@ emailjs.send(
 
 .then(data => {
 
+    return emailjs.send(
+        "service_rq3a2lp",
+        "template_Client",
+        {
+            name: name,
+            email: email,
+            date: date,
+            tourTime: time,
+            guests: guests,
+            route: route,
+            bookingId: data.bookingId
+        }
+
+    )
+
+    .then(() => data);
+
+})
+
+.then(data => {
+
     console.log(data);
 
     let paymentLink = "";
