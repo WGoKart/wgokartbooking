@@ -86,11 +86,9 @@ if (
 }
 
 emailjs.send(
-
     "service_rq3a2lp",
-    "template_uj7c5ua",
+    "template_server",
     {
-
         name: name,
         email: email,
         date: date,
@@ -98,32 +96,39 @@ emailjs.send(
         guests: guests,
         route: route,
         message: "New Booking Request"
-
-    }
-
-)
-    .then(function(){
-
-    fetch(
-    "https://script.google.com/macros/s/AKfycbwFxx0ZkuoSUx_9fFlRH1g6WiXpiZ5kenT0ZPMqhTiU9AhPe94OiUtoKIlP3TZ3VEK3uA/exec",
-    {
-        method: "POST",
-        body: JSON.stringify({
-            name: name,
-            email: email,
-            date: date,
-            time: time,
-            guests: guests,
-            route: route
-        })
     }
 )
+
+.then(() => {
+
+    return fetch(
+        "https://script.google.com/macros/s/AKfycbwFxx0ZkuoSUx_9fFlRH1g6WiXpiZ5kenT0ZPMqhTiU9AhPe94OiUtoKIlP3TZ3VEK3uA/exec",
+        {
+            method: "POST",
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                date: date,
+                time: time,
+                guests: guests,
+                route: route
+            })
+        }
+    );
+
+})
+
 .then(response => response.json())
+
 .then(data => {
 
-    emailjs.send(
+    console.log(data);
+
+    alert(JSON.stringify(data));
+
+    return emailjs.send(
         "service_rq3a2lp",
-        "template_caklm9p",
+        "template_Client",
         {
             name: name,
             email: email,
@@ -135,17 +140,11 @@ emailjs.send(
         }
     );
 
+})
+
+.then(() => {
+
     let paymentLink = "";
-
-    if (guests == 1) {
-        paymentLink = "...";
-    }
-    // 保留你原本所有 Stripe 連結
-
-    alert("Booking received. Please complete payment.");
-    window.location.href = paymentLink;
-
-});
 
     if (guests == 1) {
         paymentLink = "https://buy.stripe.com/14AfZgePS0Vz0BNbU3eZ20w";
@@ -163,28 +162,19 @@ emailjs.send(
         paymentLink = "https://buy.stripe.com/3cI8wObDGdIlesD1fpeZ20C";
     }
 
-    alert(
-        "Booking received. Please complete payment."
-    );
+    alert("Booking received. Please complete payment.");
 
     window.location.href = paymentLink;
 
 })
 
-.catch(function(error){
+.catch(error => {
 
-    console.log(error);
+    console.error(error);
 
-    alert(
-
-        "Error: " +
-
-        JSON.stringify(error)
-
-    );
+    alert("Error: " + JSON.stringify(error));
 
 });
-
 });
 
 async function checkAvailability() {
