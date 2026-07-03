@@ -105,21 +105,47 @@ emailjs.send(
     .then(function(){
 
     fetch(
-        "https://script.google.com/macros/s/AKfycbwFxx0ZkuoSUx_9fFlRH1g6WiXpiZ5kenT0ZPMqhTiU9AhPe94OiUtoKIlP3TZ3VEK3uA/exec",
+    "https://script.google.com/macros/s/AKfycbwFxx0ZkuoSUx_9fFlRH1g6WiXpiZ5kenT0ZPMqhTiU9AhPe94OiUtoKIlP3TZ3VEK3uA/exec",
+    {
+        method: "POST",
+        body: JSON.stringify({
+            name: name,
+            email: email,
+            date: date,
+            time: time,
+            guests: guests,
+            route: route
+        })
+    }
+)
+.then(response => response.json())
+.then(data => {
+
+    emailjs.send(
+        "service_rq3a2lp",
+        "template_caklm9p",
         {
-            method: "POST",
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                date: date,
-                time: time,
-                guests: guests,
-                route: route
-            })
+            name: name,
+            email: email,
+            date: date,
+            tourTime: time,
+            guests: guests,
+            route: route,
+            bookingId: data.bookingId
         }
     );
 
     let paymentLink = "";
+
+    if (guests == 1) {
+        paymentLink = "...";
+    }
+    // 保留你原本所有 Stripe 連結
+
+    alert("Booking received. Please complete payment.");
+    window.location.href = paymentLink;
+
+});
 
     if (guests == 1) {
         paymentLink = "https://buy.stripe.com/14AfZgePS0Vz0BNbU3eZ20w";
