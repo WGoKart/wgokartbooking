@@ -124,26 +124,6 @@ emailjs.send(
 
     console.log(data);
 
-    alert(JSON.stringify(data));
-
-    return emailjs.send(
-        "service_rq3a2lp",
-        "template_Client",
-        {
-            name: name,
-            email: email,
-            date: date,
-            tourTime: time,
-            guests: guests,
-            route: route,
-            bookingId: data.bookingId
-        }
-    );
-
-})
-
-.then(() => {
-
     let paymentLink = "";
 
     if (guests == 1) {
@@ -162,19 +142,15 @@ emailjs.send(
         paymentLink = "https://buy.stripe.com/3cI8wObDGdIlesD1fpeZ20C";
     }
 
-    alert("Booking received. Please complete payment.");
-
     window.location.href = paymentLink;
 
 })
 
 .catch(error => {
 
-    console.log(error);
+    console.error(error);
 
-    console.log("Template:", error);
-
-    alert(JSON.stringify(error));
+    alert("Booking failed. Please try again.");
 
 });
 });
