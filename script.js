@@ -101,97 +101,6 @@ const html = `
 
     return;
 
-emailjs.send(
-    "service_rq3a2lp",
-    "template_server",
-    {
-        name: name,
-        email: email,
-        date: date,
-        tourTime: time,
-        guests: guests,
-        route: route,
-        message: "New Booking Request"
-    }
-)
-
-.then(() => {
-
-    return fetch(
-        "https://script.google.com/macros/s/AKfycbwFxx0ZkuoSUx_9fFlRH1g6WiXpiZ5kenT0ZPMqhTiU9AhPe94OiUtoKIlP3TZ3VEK3uA/exec",
-        {
-            method: "POST",
-            body: JSON.stringify({
-                name: name,
-                email: email,
-                date: date,
-                time: time,
-                guests: guests,
-                route: route
-            })
-        }
-    );
-
-})
-
-.then(response => response.json())
-
-.then(data => {
-
-    return emailjs.send(
-        "service_rq3a2lp",
-        "template_Client",
-        {
-            name: name,
-            email: email,
-            date: date,
-            tourTime: time,
-            guests: guests,
-            route: route,
-            bookingId: data.bookingId
-        }
-
-    )
-
-    .then(() => data);
-
-})
-
-.then(data => {
-
-    console.log(data);
-
-    let paymentLink = "";
-
-    if (guests == 1) {
-        paymentLink = "https://buy.stripe.com/14AfZgePS0Vz0BNbU3eZ20w";
-    } else if (guests == 2) {
-        paymentLink = "https://buy.stripe.com/3cI14mePS47L98j7DNeZ20x";
-    } else if (guests == 3) {
-        paymentLink = "https://buy.stripe.com/aFa14m5fi7jX84f5vFeZ20y";
-    } else if (guests == 4) {
-        paymentLink = "https://buy.stripe.com/3cIdR87nq7jX70be2beZ20z";
-    } else if (guests == 5) {
-        paymentLink = "https://buy.stripe.com/8x2aEW7nq33H1FR7DNeZ20A";
-    } else if (guests == 6) {
-        paymentLink = "https://buy.stripe.com/bJe3cuazCbAd3NZaPZeZ20B";
-    } else if (guests == 7) {
-        paymentLink = "https://buy.stripe.com/3cI8wObDGdIlesD1fpeZ20C";
-    }
-
-    window.location.href = paymentLink;
-
-})
-
-.catch(error => {
-
-    console.error(error);
-
-    alert("Booking failed. Please try again.");
-
-});
-});
-
 async function checkAvailability() {
 
     const selectedDate =
@@ -357,3 +266,103 @@ document
 
     }
 );
+
+emailjs.send(
+    "service_rq3a2lp",
+    "template_server",
+    {
+        name: name,
+        email: email,
+        date: date,
+        tourTime: time,
+        guests: guests,
+        route: route,
+        message: "New Booking Request"
+    }
+)
+
+.then(() => {
+
+    return fetch(
+        "https://script.google.com/macros/s/AKfycbwFxx0ZkuoSUx_9fFlRH1g6WiXpiZ5kenT0ZPMqhTiU9AhPe94OiUtoKIlP3TZ3VEK3uA/exec",
+        {
+            method: "POST",
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                date: date,
+                time: time,
+                guests: guests,
+                route: route
+            })
+        }
+    );
+
+})
+
+.then(response => response.json())
+
+.then(data => {
+
+    return emailjs.send(
+        "service_rq3a2lp",
+        "template_Client",
+        {
+            name: name,
+            email: email,
+            date: date,
+            tourTime: time,
+            guests: guests,
+            route: route,
+            bookingId: data.bookingId
+        }
+
+    )
+
+    .then(() => data);
+
+})
+
+.then(data => {
+
+    console.log(data);
+
+    let paymentLink = "";
+
+    if (guests == 1) {
+        paymentLink = "https://buy.stripe.com/14AfZgePS0Vz0BNbU3eZ20w";
+    } else if (guests == 2) {
+        paymentLink = "https://buy.stripe.com/3cI14mePS47L98j7DNeZ20x";
+    } else if (guests == 3) {
+        paymentLink = "https://buy.stripe.com/aFa14m5fi7jX84f5vFeZ20y";
+    } else if (guests == 4) {
+        paymentLink = "https://buy.stripe.com/3cIdR87nq7jX70be2beZ20z";
+    } else if (guests == 5) {
+        paymentLink = "https://buy.stripe.com/8x2aEW7nq33H1FR7DNeZ20A";
+    } else if (guests == 6) {
+        paymentLink = "https://buy.stripe.com/bJe3cuazCbAd3NZaPZeZ20B";
+    } else if (guests == 7) {
+        paymentLink = "https://buy.stripe.com/3cI8wObDGdIlesD1fpeZ20C";
+    }
+
+    window.location.href = paymentLink;
+
+})
+
+.catch(error => {
+
+    console.error(error);
+
+    alert("Booking failed. Please try again.");
+
+});
+});
+
+document
+    .getElementById("editBooking")
+    .addEventListener("click", () => {
+
+document
+    .getElementById("confirmModal").style.display = "none";
+
+});
