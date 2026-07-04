@@ -85,6 +85,23 @@ if (
     return;
 }
 
+const html = `
+
+    <h3>Please confirm your booking:</h3>
+
+    <p><strong>Name:</strong> ${name}</p>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Date:</strong> ${date}</p>
+    <p><strong>Time:</strong> ${time}</p>
+    <p><strong>Guests:</strong> ${guests}</p>
+    <p><strong>Route:</strong> ${route}</p>
+    `;
+    document.getElementById("confirmationDetails").innerHTML = html;
+
+    document.getElementById("confirmationModal").style.display = "flex";
+
+    return;
+
 emailjs.send(
     "service_rq3a2lp",
     "template_server",
