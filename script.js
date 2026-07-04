@@ -1,3 +1,5 @@
+let bookingData = {};
+
 const dateInput =
     document.getElementById("tourDate");
 
@@ -73,6 +75,15 @@ document
 
 ).value;
 
+bookingData = {
+    name,
+    email,
+    date,
+    time,
+    guests,
+    route
+};
+
 const selectedDate = new Date(date);
 
 if (
@@ -100,6 +111,8 @@ const html = `
     document.getElementById("confirmModal").style.display = "flex";
 
     return;
+
+});
 
 async function checkAvailability() {
 
@@ -267,16 +280,30 @@ document
     }
 );
 
-emailjs.send(
+    document
+        .getElementById("editBooking") 
+        .addEventListener("click", () => {
+
+    document
+        .getElementById("confirmModal").style.display = "none";
+
+});
+
+    document
+        .getElementById("confirmBooking")
+        .addEventListener("click", () => {
+
+
+    emailjs.send(
     "service_rq3a2lp",
     "template_server",
     {
-        name: name,
-        email: email,
-        date: date,
-        tourTime: time,
-        guests: guests,
-        route: route,
+        name: bookingData.name,
+        email: bookingData.email,
+        date: bookingData.date,
+        tourTime: bookingData.time,
+        guests: bookingData.guests,
+        route: bookingData.route,
         message: "New Booking Request"
     }
 )
@@ -288,12 +315,12 @@ emailjs.send(
         {
             method: "POST",
             body: JSON.stringify({
-                name: name,
-                email: email,
-                date: date,
-                time: time,
-                guests: guests,
-                route: route
+                name: bookingData.name,
+                email: bookingData.email,
+                date: bookingData.date,
+                time: bookingData.time,
+                guests: bookingData.guests,
+                route: bookingData.route
             })
         }
     );
@@ -308,12 +335,12 @@ emailjs.send(
         "service_rq3a2lp",
         "template_Client",
         {
-            name: name,
-            email: email,
-            date: date,
-            tourTime: time,
-            guests: guests,
-            route: route,
+            name: bookingData.name,
+            email: bookingData.email,
+            date: bookingData.date,
+            tourTime: bookingData.time,
+            guests: bookingData.guests,
+            route: bookingData.route,
             bookingId: data.bookingId
         }
 
@@ -329,19 +356,19 @@ emailjs.send(
 
     let paymentLink = "";
 
-    if (guests == 1) {
+    if (bookingData.guests == 1) {
         paymentLink = "https://buy.stripe.com/14AfZgePS0Vz0BNbU3eZ20w";
-    } else if (guests == 2) {
+    } else if (bookingData.guests == 2) {
         paymentLink = "https://buy.stripe.com/3cI14mePS47L98j7DNeZ20x";
-    } else if (guests == 3) {
+    } else if (bookingData.guests == 3) {
         paymentLink = "https://buy.stripe.com/aFa14m5fi7jX84f5vFeZ20y";
-    } else if (guests == 4) {
+    } else if (bookingData.guests == 4) {
         paymentLink = "https://buy.stripe.com/3cIdR87nq7jX70be2beZ20z";
-    } else if (guests == 5) {
+    } else if (bookingData.guests == 5) {
         paymentLink = "https://buy.stripe.com/8x2aEW7nq33H1FR7DNeZ20A";
-    } else if (guests == 6) {
+    } else if (bookingData.guests == 6) {
         paymentLink = "https://buy.stripe.com/bJe3cuazCbAd3NZaPZeZ20B";
-    } else if (guests == 7) {
+    } else if (bookingData.guests == 7) {
         paymentLink = "https://buy.stripe.com/3cI8wObDGdIlesD1fpeZ20C";
     }
 
@@ -356,13 +383,5 @@ emailjs.send(
     alert("Booking failed. Please try again.");
 
 });
-});
-
-document
-    .getElementById("editBooking")
-    .addEventListener("click", () => {
-
-document
-    .getElementById("confirmModal").style.display = "none";
 
 });
