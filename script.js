@@ -327,7 +327,17 @@ document
 
 })
 
-.then(response => response.json())
+.then(async response => {
+
+    const text = await response.text();
+
+    console.log(text);
+
+    alert(text);
+
+    return JSON.parse(text);
+
+})
 
 .then(data => {
 
