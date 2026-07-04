@@ -38,7 +38,38 @@ async function(){
 
     const result = await response.json();
 
-    document.getElementById("result").textContent =
-        result.message;
+const resultBox = document.getElementById("result");
+
+resultBox.textContent = result.message;
+
+// 預設清除顏色
+resultBox.style.color = "";
+
+// 已取消（綠色）
+if (result.message === "This booking has already been cancelled.") {
+
+    resultBox.style.color = "#0B8043";
+
+}
+// 其餘錯誤（紅色）
+else if (
+
+    result.message === "This cancellation request has already been submitted." ||
+
+    result.message === "Online cancellations, refunds, or rescheduling are not accepted on the day before or the day of the tour." ||
+
+    result.message === "Booking ID or Email not found."
+
+) {
+
+    resultBox.style.color = "#D93025";
+
+}
+// 成功送出取消申請（黃色）
+else {
+
+    resultBox.style.color = "#f4b400";
+
+}
 
 });

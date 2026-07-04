@@ -354,25 +354,7 @@ document
 
     console.log(data);
 
-    let paymentLink = "";
-
-    if (bookingData.guests == 1) {
-        paymentLink = "https://buy.stripe.com/14AfZgePS0Vz0BNbU3eZ20w";
-    } else if (bookingData.guests == 2) {
-        paymentLink = "https://buy.stripe.com/3cI14mePS47L98j7DNeZ20x";
-    } else if (bookingData.guests == 3) {
-        paymentLink = "https://buy.stripe.com/aFa14m5fi7jX84f5vFeZ20y";
-    } else if (bookingData.guests == 4) {
-        paymentLink = "https://buy.stripe.com/3cIdR87nq7jX70be2beZ20z";
-    } else if (bookingData.guests == 5) {
-        paymentLink = "https://buy.stripe.com/8x2aEW7nq33H1FR7DNeZ20A";
-    } else if (bookingData.guests == 6) {
-        paymentLink = "https://buy.stripe.com/bJe3cuazCbAd3NZaPZeZ20B";
-    } else if (bookingData.guests == 7) {
-        paymentLink = "https://buy.stripe.com/3cI8wObDGdIlesD1fpeZ20C";
-    }
-
-    window.location.href = paymentLink;
+    window.location.href = data.checkoutUrl;
 
 })
 
