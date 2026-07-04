@@ -96,9 +96,8 @@ const html = `
     <p><strong>Guests:</strong> ${guests}</p>
     <p><strong>Route:</strong> ${route}</p>
     `;
-    document.getElementById("confirmationDetails").innerHTML = html;
-
-    document.getElementById("confirmationModal").style.display = "flex";
+    document.getElementById("confirmContent").innerHTML = html;
+    document.getElementById("confirmModal").style.display = "flex";
 
     return;
 
