@@ -368,11 +368,13 @@ document
 
 })
 
-.catch(error => {
+.catch(async error => {
 
     console.error(error);
 
-    alert("Booking failed. Please try again.");
+    alert(
+        JSON.stringify(error)
+    );
 
 });
 
