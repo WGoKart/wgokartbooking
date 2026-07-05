@@ -166,7 +166,7 @@ async function checkAvailability() {
 
         bookings.forEach(function(booking){
 
-            const bookingDate =
+        const bookingDate =
             booking.date;
 
             if(
@@ -295,6 +295,7 @@ document
 
             console.log("Start");
 
+/*            
     emailjs.send(
     "service_rq3a2lp",
     "template_server",
@@ -310,26 +311,26 @@ document
 )
 
 .then(() => {
+*/
 
+    console.log("Before Fetch");
     return fetch(
-        "https://script.google.com/macros/s/AKfycbwFxx0ZkuoSUx_9fFlRH1g6WiXpiZ5kenT0ZPMqhTiU9AhPe94OiUtoKIlP3TZ3VEK3uA/exec",
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "text/plain"
-            },
-            body: JSON.stringify({
-                name: bookingData.name,
-                email: bookingData.email,
-                date: bookingData.date,
-                time: bookingData.time,
-                guests: bookingData.guests,
-                route: bookingData.route
-            })
-        }
-    );
-
-})
+    "https://script.google.com/macros/s/AKfycbwFxx0ZkuoSUx_9fFlRH1g6WiXpiZ5kenT0ZPMqhTiU9AhPe94OiUtoKIlP3TZ3VEK3uA/exec",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify({
+            name: bookingData.name,
+            email: bookingData.email,
+            date: bookingData.date,
+            time: bookingData.time,
+            guests: bookingData.guests,
+            route: bookingData.route
+        })
+    }
+)
 
 .then(async response => {
 
