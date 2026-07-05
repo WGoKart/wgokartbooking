@@ -350,13 +350,8 @@ document
 
     console.log("Apps Script:", data);
 
-    if (data.result !== "success") {
-
-        alert(JSON.stringify(data));
-
-        throw new Error("Apps Script Error");
-
-    }
+    // Stripe 回傳的內容在 body 裡
+    const stripe = JSON.parse(data.body);
 
     return emailjs.send(
         "service_rq3a2lp",
@@ -368,18 +363,18 @@ document
             tourTime: bookingData.time,
             guests: bookingData.guests,
             route: bookingData.route,
-            bookingId: data.bookingId
+            bookingId: bookingData.bookingId || ""
         }
     )
-    .then(() => data);
+    .then(() => stripe);
 
 })
 
-.then(data => {
+.then(stripe => {
 
-    console.log(data);
+    console.log(stripe);
 
-    window.location.href = data.checkoutUrl;
+    window.location.href = stripe.url;
 
 })
 
