@@ -340,8 +340,6 @@ document
 
     console.log("Body:", text);
 
-    alert(text);
-
     return JSON.parse(text);
 
 })
@@ -352,7 +350,7 @@ document
 
     const stripe = JSON.parse(data.body);
 
-    console.log("Stripe:", stripe);
+    console.log(stripe);
 
     if (!stripe.url) {
         alert("Stripe URL not found");
