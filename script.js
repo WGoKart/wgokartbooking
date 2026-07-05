@@ -348,15 +348,12 @@ document
 
     console.log("Apps Script:", data);
 
-    const stripe = JSON.parse(data.body);
+    console.log(data);
 
-    console.log(stripe);
-
-    if (!stripe.url) {
-        alert("Stripe URL not found");
-        console.log(stripe);
-        return;
-    }
+        if (!data.checkoutUrl) {
+            alert("Checkout URL not found");
+            return;
+        }
 
     return emailjs.send(
         "service_rq3a2lp",
@@ -372,7 +369,7 @@ document
         }
     ).then(() => {
 
-        window.location.href = stripe.url;
+        window.location.href = data.checkoutUrl;
 
     });
 
