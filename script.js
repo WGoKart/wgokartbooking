@@ -350,8 +350,15 @@ document
 
     console.log("Apps Script:", data);
 
-    // Stripe 回傳的內容在 body 裡
     const stripe = JSON.parse(data.body);
+
+    console.log("Stripe:", stripe);
+
+    if (!stripe.url) {
+        alert("Stripe URL not found");
+        console.log(stripe);
+        return;
+    }
 
     return emailjs.send(
         "service_rq3a2lp",
@@ -363,18 +370,13 @@ document
             tourTime: bookingData.time,
             guests: bookingData.guests,
             route: bookingData.route,
-            bookingId: bookingData.bookingId || ""
+            bookingId: stripe.metadata.bookingId
         }
-    )
-    .then(() => stripe);
+    ).then(() => {
 
-})
+        window.location.href = stripe.url;
 
-.then(stripe => {
-
-    console.log(stripe);
-
-    window.location.href = stripe.url;
+    });
 
 })
 
