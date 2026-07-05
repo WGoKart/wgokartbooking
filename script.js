@@ -293,6 +293,7 @@ document
         .getElementById("confirmBooking")
         .addEventListener("click", () => {
 
+            console.log("Start");
 
     emailjs.send(
     "service_rq3a2lp",
@@ -314,6 +315,9 @@ document
         "https://script.google.com/macros/s/AKfycbwFxx0ZkuoSUx_9fFlRH1g6WiXpiZ5kenT0ZPMqhTiU9AhPe94OiUtoKIlP3TZ3VEK3uA/exec",
         {
             method: "POST",
+            headers: {
+                "Content-Type": "text/plain"
+            },
             body: JSON.stringify({
                 name: bookingData.name,
                 email: bookingData.email,
