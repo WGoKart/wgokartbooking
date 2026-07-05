@@ -365,7 +365,7 @@ document
             tourTime: bookingData.time,
             guests: bookingData.guests,
             route: bookingData.route,
-            bookingId: stripe.metadata.bookingId
+            bookingId: data.bookingId
         }
     ).then(() => {
 
