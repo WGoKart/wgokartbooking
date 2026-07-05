@@ -329,9 +329,11 @@ document
 
 .then(async response => {
 
+    console.log("HTTP Status:", response.status);
+
     const text = await response.text();
 
-    console.log(text);
+    console.log("Body:", text);
 
     alert(text);
 
@@ -340,6 +342,16 @@ document
 })
 
 .then(data => {
+
+    console.log("Apps Script:", data);
+
+    if (data.result !== "success") {
+
+        alert(JSON.stringify(data));
+
+        throw new Error("Apps Script Error");
+
+    }
 
     return emailjs.send(
         "service_rq3a2lp",
@@ -353,9 +365,7 @@ document
             route: bookingData.route,
             bookingId: data.bookingId
         }
-
     )
-
     .then(() => data);
 
 })
