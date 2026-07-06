@@ -293,6 +293,12 @@ document
         .getElementById("confirmBooking")
         .addEventListener("click", () => {
 
+            const btn = document.getElementById("confirmBooking");
+
+                btn.disabled = true;
+
+                btn.textContent = "Processing...";
+
             console.log("Start");
 
 /*            
@@ -350,28 +356,23 @@ document
 
     console.log(data);
 
+        if (data.result !== "success") {
+
+    alert(data.message || "Booking failed.");
+
+    return;
+
+        }
+
         if (!data.checkoutUrl) {
-            alert("Checkout URL not found");
-            return;
+
+    alert("Checkout URL not found.");
+
+    return;
+
         }
 
-    return emailjs.send(
-        "service_rq3a2lp",
-        "template_Client",
-        {
-            name: bookingData.name,
-            email: bookingData.email,
-            date: bookingData.date,
-            tourTime: bookingData.time,
-            guests: bookingData.guests,
-            route: bookingData.route,
-            bookingId: data.bookingId
-        }
-    ).then(() => {
-
-        window.location.href = data.checkoutUrl;
-
-    });
+    window.location.href = data.checkoutUrl;
 
 })
 
@@ -382,6 +383,10 @@ document
     alert(
         JSON.stringify(error)
     );
+
+    btn.disabled = false;
+
+    btn.textContent = "Confirm Booking";
 
 });
 
