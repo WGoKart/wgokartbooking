@@ -126,7 +126,10 @@ async function checkAvailability() {
     );
 
     const bookings =
+
         await response.json();
+
+    console.log("Bookings:", bookings);
 
     const times = [
         "10:00",
@@ -165,6 +168,12 @@ async function checkAvailability() {
         let bookedGuests = 0;
 
         bookings.forEach(function(booking){
+
+            console.log("selectedDate =", selectedDate);
+            console.log("booking.date =", booking.date);
+
+            console.log("time option =", time);
+            console.log("booking.time =", booking.time);
 
         const bookingDate =
             booking.date;
