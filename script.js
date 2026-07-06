@@ -117,7 +117,7 @@ const html = `
 async function checkAvailability() {
 
     const selectedDate =
-        document.getElementById("tourDate").value;
+    document.getElementById("tourDate").value.replace(/-/g, "/");
 
     if (!selectedDate) return;
 
