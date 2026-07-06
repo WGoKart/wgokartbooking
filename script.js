@@ -297,7 +297,7 @@ document
 
                 btn.disabled = true;
 
-                btn.textContent = "Processing...";
+                btn.textContent = "Redirecting to Payment...";
 
             console.log("Start");
 
@@ -358,13 +358,19 @@ document
 
         if (data.result !== "success") {
 
+    btn.disabled = false;
+    btn.textContent = "Confirm Booking";
+
     alert(data.message || "Booking failed.");
 
     return;
 
-        }
+}
 
         if (!data.checkoutUrl) {
+
+    btn.disabled = false;
+    btn.textContent = "Confirm Booking";
 
     alert("Checkout URL not found.");
 
