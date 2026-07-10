@@ -200,7 +200,7 @@ h2{
 
     width:100%;
 
-    font-size:clamp(24px,4vw,56px);
+    font-size:clamp(16px,4vw,32px);
 
     font-weight:700;
 
