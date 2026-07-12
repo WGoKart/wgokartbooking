@@ -97,22 +97,50 @@ if (
 }
 
 const html = `
+<div class="booking-summary">
 
-    <h3>Please confirm your booking:</h3>
+    <div class="booking-row">
+        <span>Name</span>
+        <strong>${name}</strong>
+    </div>
 
-    <p><strong>Name:</strong> ${name}</p>
-    <p><strong>Email:</strong> ${email}</p>
-    <p><strong>Date:</strong> ${date}</p>
-    <p><strong>Time:</strong> ${time}</p>
-    <p><strong>Guests:</strong> ${guests}</p>
-    <p><strong>Route:</strong> ${route}</p>
-    `;
-    document.getElementById("confirmContent").innerHTML = html;
-    document.getElementById("confirmModal").style.display = "flex";
+    <div class="booking-row">
+        <span>Email</span>
+        <strong>${email}</strong>
+    </div>
 
-    return;
+    <div class="booking-row">
+        <span>Date</span>
+        <strong>${date}</strong>
+    </div>
+
+    <div class="booking-row">
+        <span>Time</span>
+        <strong>${time}</strong>
+    </div>
+
+    <div class="booking-row">
+        <span>Guests</span>
+        <strong>${guests}</strong>
+    </div>
+
+    <div class="booking-row">
+        <span>Route</span>
+        <strong>${route}</strong>
+    </div>
+
+</div>
+`;
+
+document.getElementById("confirmContent").innerHTML = html;
+
+document.getElementById("confirmModal").style.display = "flex";
 
 });
+
+
+
+
 
 async function checkAvailability() {
 
