@@ -235,4 +235,32 @@ h2{
 
     }
 
+    .info{
+
+        margin-top:40px;
+
+        background:#252525;
+
+        border-radius:15px;
+
+        padding:15px;
+
+        text-align:left;
+
+    }
+
+    .info h3{
+
+        margin-bottom:20px;
+
+    }
+
+    .info ul{
+
+        padding-left:20px;
+
+        line-height:2;
+
+    }
+
 }
