@@ -6,8 +6,8 @@ let lang = "en";
 if (path.includes("/tw/")) {
     lang = "tw";
 }
-else if (path.includes("/ja/")) {
-    lang = "ja";
+else if (path.includes("/jp/")) {
+    lang = "jp";
 }
 
 const text = {
@@ -42,7 +42,7 @@ const text = {
         requestSubmitted: "您的取消申請已送出。"
     },
 
-    ja: {
+    jp: {
 
         enterInfo: "予約番号とメールアドレスを入力してください。",
 

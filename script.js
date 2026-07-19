@@ -6,8 +6,8 @@ let lang = "en"; // Default language
 if (path.includes("/tw/")) {
     lang = "tw";
 }
-else if (path.includes("/ja/")) {
-    lang = "ja";
+else if (path.includes("/jp/")) {
+    lang = "jp";
 }
 
 
@@ -60,7 +60,7 @@ const text = {
         
     },
 
-    ja: {
+    jp: {
         name: "お名前",
         email: "メールアドレス",
         date: "日付",
