@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>W Go-Kart Booking</title>
+
+<link rel="stylesheet" href="../style.css">
+
+</head>
+
+
+<body>
+    <section id="booking" class="booking">
+ 
+    <h2>Book Your Tour</h2>
+
+    <form id="bookingForm">
+
+    <label>姓名</label>
+    <input type="text" id="name" placeholder="Full Name" required>
+
+    <label>信箱</label>
+    <input type="email" id="email" placeholder="Email" required>
+
+    <label>日期</label>
+    <input type="date" id="tourDate" required>
+
+    <label>時段</label>
+    <select id="tourTime">
+        <option>10:00</option>
+        <option>11:00</option>
+        <option>12:00</option>
+        <option>13:00</option>
+        <option>14:00</option>
+        <option>15:00</option>
+        <option>16:00</option>
+        <option>17:00</option>
+        <option>18:00</option>
+        <option>19:00</option>
+        <option>20:00</option>
+        <option>21:00</option>
+        <option>22:00</option>
+    </select>
+
+    <label>Guests</label>
+    <select id="guests">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+    </select>
+<label>Tour Route</label>
+
+<div class="tour-options">
+
+    <label>
+    <input
+        type="radio"
+        name="tourRoute"
+        value="Experience Plan"
+        checked
+    >
+       🌆 Experience Plan <br>¥ 6,000/30 分鐘
+    </label>
+
+    <label>
+    <input
+        type="radio"
+        name="tourRoute"
+        value="Osaka Castle"
+
+    >
+        🏯 大阪城<br>¥ 14,000/1.5 小時
+        <small>(Recommended Day Time)</small>
+    </label>
+
+    <label>
+    <input
+            type="radio"
+            name="tourRoute"
+            value="Tsutenkaku"
+    >
+        🗼 通天閣<br>¥ 14,000/1.5 小時
+        <small>(Recommended Night)</small>
+    </label>
+
+</div>
+    <button type="submit">
+        BOOK NOW
+    </button>
+
+</form>
+    
+
+</section>
+
+<div id="confirmModal" class="confirm-modal">
+
+    <div class="confirm-box">
+
+        <h2>Confirm Your Booking</h2>
+
+        <div id="confirmContent"></div>
+
+        <div class="confirm-policy">
+
+            <h3>Cancellation & Refund Policy</h3>
+
+            <ul class="policy-list">
+
+            <li>Free cancellation up to 48 hours before the scheduled tour.</li>
+            <li>Cancellations made within 48 hours of the tour are non-refundable.</li>
+            <li>Rescheduling is available, subject to availability.</li>
+            <li>If the tour is cancelled due to rain or unsafe weather conditions,
+                guests may choose a full refund or reschedule at no additional cost.</li>
+
+            </ul>
+
+            <p class="policy-note">
+                By clicking <strong>Confirm</strong>,
+                you will proceed to the payment page to complete your booking.
+            </p>
+
+        </div>
+
+        <div class="confirm-buttons">
+
+            <button id="editBooking">Edit</button>
+
+            <button id="confirmBooking">Confirm</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script src="../script.js"></script>
+
+</body>
+
+</html>
