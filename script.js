@@ -20,9 +20,9 @@ const text = {
         guests: "Guests",
         route: "Route",
 
-        experience: "Experience Plan",
-        castle: "Osaka Castle",
-        tsutenkaku: "Tsutenkaku",
+        morning: "Morning & Afternoon",
+        evening: "Evening",
+        night: "Night Experience",
 
         dateLimit: "Please select a date within the next 6 months.",
 
@@ -44,9 +44,9 @@ const text = {
         guests: "人數",
         route: "路線",
 
-        experience: "體驗方案",
-        castle: "大阪城",
-        tsutenkaku: "通天閣",
+        morning: "Morning & Afternoon",
+        evening: "Evening",
+        night: "Night Experience",
 
         dateLimit: "請選擇未來六個月內的日期。",
 
@@ -68,9 +68,9 @@ const text = {
         guests: "人数",
         route: "コース",
 
-        experience: "体験プラン",
-        castle: "大阪城",
-        tsutenkaku: "通天閣",
+        morning: "Morning & Afternoon",
+        evening: "Evening",
+        night: "Night Experience",
 
         dateLimit: "6か月以内の日付を選択してください。",
 
@@ -169,16 +169,6 @@ document
 
 ).value;
 
-let displayRoute = route;
-
-if (route === "Experience Plan") {
-    displayRoute = t.experience;
-} else if (route === "Osaka Castle") {
-    displayRoute = t.castle;
-} else if (route === "Tsutenkaku") {
-    displayRoute = t.tsutenkaku;
-}
-
 bookingData = {
     name,
     email,
@@ -261,21 +251,45 @@ async function checkAvailability() {
 
     console.log("Bookings:", bookings);
 
-    const times = [
-        "10:00",
-        "11:00",
-        "12:00",
-        "13:00",
-        "14:00",
-        "15:00",
-        "16:00",
-        "17:00",
-        "18:00",
-        "19:00",
-        "20:00",
-        "21:00",
-        "22:00"
-    ];
+    const route =
+    document.querySelector(
+    'input[name="tourRoute"]:checked'
+    ).value;
+
+    let times = [];
+
+    if (route === "Morning & Afternoon") {
+
+        times = [
+            "10:00",
+            "11:00",
+            "12:00",
+            "13:00",
+            "14:00",
+            "15:00",
+            "16:00"
+        ];
+
+    }
+    else if (route === "Evening") {
+
+        times = [
+            "17:00",
+            "18:00",
+            "19:00"
+        ];
+
+    }
+    else if (route === "Night Experience") {
+
+        times = [
+            "20:00",
+            "21:00",
+            "22:00"
+        ];
+
+    }
+
     const now = new Date();
 
     const currentDate =
@@ -325,8 +339,7 @@ async function checkAvailability() {
 
         });
 
-        const remaining =
-             7 - bookedGuests;
+        const remaining = Math.max(0, 7 - bookedGuests);
             
         if (
             select.options.length === 0
@@ -386,21 +399,59 @@ document
 
 );
 
+document
+.querySelectorAll(
+'input[name="tourRoute"]'
+)
+.forEach(radio => {
+
+    radio.addEventListener(
+        "change",
+        checkAvailability
+    );
+
+});
+
 function updateGuestsOptions(maxGuests) {
-    const guestsSelect = document.getElementById("guests");
+
+    const guestsSelect =
+        document.getElementById("guests");
+
     guestsSelect.innerHTML = "";
 
-    for (
-        let i = 1;
-        i <= maxGuests;
-        i++
-    ) {
-        const option = 
+    if (maxGuests <= 0) {
+
+        const option =
             document.createElement("option");
-        option.value = i;
-        option.textContent = i;
+
+        option.textContent =
+            "Fully Booked";
+
+        option.value = "";
+
+        option.disabled = true;
+
+        option.selected = true;
+
         guestsSelect.appendChild(option);
+
+        return;
+
     }
+
+    for (let i = 1; i <= maxGuests; i++) {
+
+        const option =
+            document.createElement("option");
+
+        option.value = i;
+
+        option.textContent = i;
+
+        guestsSelect.appendChild(option);
+
+    }
+
 }
 
 document
