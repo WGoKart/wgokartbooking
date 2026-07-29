@@ -412,6 +412,8 @@ document
 
 });
 
+
+
 function updateGuestsOptions(maxGuests) {
 
     const guestsSelect =
