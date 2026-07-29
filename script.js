@@ -169,6 +169,14 @@ document
 
 ).value;
 
+const routeNames = {
+    "Morning & Afternoon": "☀️ Osaka Day Tour",
+    "Evening": "🌇 Osaka Sunset Tour",
+    "Night Experience": "🌃 Osaka Night Tour"
+};
+
+const displayRoute = routeNames[route] || route;
+
 bookingData = {
     name,
     email,
