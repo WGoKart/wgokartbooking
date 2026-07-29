@@ -137,21 +137,21 @@ body {
 
 }
 
-.tour-options label {
+.tour-options label{
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
+    align-items:center;
 
-    gap: 10px;
+    gap:15px;
 
-    background: rgba(0,0,0,0.35);
+    background:rgba(0,0,0,.35);
 
-    padding: 15px;
+    padding:15px;
 
-    border-radius: 12px;
+    border-radius:12px;
 
-    color: white;
+    color:#fff;
 
 }
 
@@ -165,9 +165,32 @@ body {
 
 }
 
-.tour-options small {
+.tour-info{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    width:100%;
+
+}
+
+.tour-detail{
+
+    line-height:1.6;
+
+}
+
+.tour-options label small {
 
     color: #ffd700;
+    display: block;
+    text-align: right;
+    font-weight:700;
+    font-size:16px;
+    white-space:nowrap;
 
 }
 
