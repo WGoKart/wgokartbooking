@@ -218,7 +218,7 @@ const html = `
 
     <div class="booking-row">
         <span>${t.route}</span>
-        <strong>${displayRoute}</strong>
+        <strong>${route}</strong>
     </div>
 
 </div>
